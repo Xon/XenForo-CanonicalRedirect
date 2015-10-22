@@ -24,6 +24,12 @@ robot={xen:phrase sv_canonicalredirect_robots}</edit_format_params>
       <sub_options></sub_options>
       <relation group_id="SV_CanonicalRedirect" display_order="100"/>
     </option>
+    <option option_id="SV_CanonicalRedirection_Perm" edit_format="onoff" data_type="boolean" can_backup="1">
+      <default_value>1</default_value>
+      <edit_format_params></edit_format_params>
+      <sub_options></sub_options>
+      <relation group_id="SV_CanonicalRedirect" display_order="110"/>
+    </option>
   </optiongroups>
   <permissions>
     <permission_groups/>
@@ -35,6 +41,8 @@ robot={xen:phrase sv_canonicalredirect_robots}</edit_format_params>
     <phrase title="option_group_SV_CanonicalRedirect_description" version_id="1000000" version_string="1.0.0"><![CDATA[]]></phrase>
     <phrase title="option_SV_CanonicalRedirection" version_id="1000000" version_string="1.0.0"><![CDATA[Canonical Redirection applies to]]></phrase>
     <phrase title="option_SV_CanonicalRedirection_explain" version_id="1000000" version_string="1.0.0"><![CDATA[]]></phrase>
+    <phrase title="option_SV_CanonicalRedirection_Perm" version_id="1000000" version_string="1.0.0"><![CDATA[Permanent redirect]]></phrase>
+    <phrase title="option_SV_CanonicalRedirection_Perm_explain" version_id="1000000" version_string="1.0.0"><![CDATA[]]></phrase>
     <phrase title="sv_canonicalredirect_all" version_id="1000000" version_string="1.0.0"><![CDATA[All]]></phrase>
     <phrase title="sv_canonicalredirect_guests" version_id="1000000" version_string="1.0.0"><![CDATA[Guest + Robots]]></phrase>
     <phrase title="sv_canonicalredirect_nonadmins" version_id="1000000" version_string="1.0.0"><![CDATA[Not administrators]]></phrase>
