@@ -1,6 +1,6 @@
 # XenForo-CanonicalRedirect
 
-Redirects viewers to the canonical URL.
+Redirects viewers to the canonical URL. Will not apply redirection to AdminCP sessions.
 
 Options:
 - Apply to all.
