@@ -40,8 +40,7 @@ class SV_CanonicalRedirect_Listener
                 $canRedirect = empty($visitor['user_id']);
                 break;
             case 'robot':
-
-                $canRedirect = empty($visitor['user_id']) || $session->get('robotId');
+                $canRedirect = empty($visitor['user_id']) && $session->get('robotId');
                 break;
         }
         if (!$canRedirect)
