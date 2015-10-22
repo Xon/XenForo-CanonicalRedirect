@@ -51,7 +51,8 @@ class SV_CanonicalRedirect_Listener
         $host = @$_SERVER['HTTP_HOST'];
         $requestUri = @$_SERVER['REQUEST_URI'];
         $basePath = rtrim(XenForo_Link::convertUriToAbsoluteUri($options->boardUrl, true), '/');
-        if (empty($host) || substr($host, 0, strlen($basePath)) == $basePath)
+        $boardHost = parse_url($basePath, PHP_URL_HOST);
+        if (empty($host) || substr($host, 0, strlen($boardHost)) == $boardHost)
         {
             return;
         }
