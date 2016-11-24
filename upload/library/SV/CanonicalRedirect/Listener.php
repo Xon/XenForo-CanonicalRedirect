@@ -43,6 +43,11 @@ class SV_CanonicalRedirect_Listener
                 $canRedirect = empty($visitor['user_id']) && $session->get('robotId');
                 break;
         }
+        if (!$canRedirect && $options->SV_CanonicalRedirectionGroups_Blacklist)
+        {
+            $blacklist = explode(',', $options->SV_CanonicalRedirectionGroups_Blacklist);
+            $canRedirect = $blacklist && $visitor->isMemberOf($blacklist);
+        }
         if (!$canRedirect)
         {
             return;
