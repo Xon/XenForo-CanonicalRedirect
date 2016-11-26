@@ -54,11 +54,25 @@ class SV_CanonicalRedirect_Listener
         }
 
         $host = @$_SERVER['HTTP_HOST'];
+        if (empty($host))
+        {
+            // bad config configuration
+            return;
+        }
         $requestUri = @$_SERVER['REQUEST_URI'];
         $basePath = rtrim(XenForo_Link::convertUriToAbsoluteUri($options->boardUrl, true), '/');
         $boardHost = parse_url($basePath, PHP_URL_HOST);
-        if (empty($host) || substr($host, 0, strlen($boardHost)) == $boardHost)
+        if (substr($host, 0, strlen($boardHost)) == $boardHost)
         {
+            if ($options->SV_CanonicalRedirection_CloudFlare &&
+               (empty($_SERVER['HTTP_CF_RAY']) || empty($_SERVER['HTTP_CF_VISITOR']) || empty($_SERVER['HTTP_CF_CONNECTING_IP'])))
+            {
+                // on non-cloudflare URL, but not using cloudflare!
+                $controllerResponse = new XenForo_ControllerResponse_Error();
+                $controllerResponse->errorText = "Must use CloudFlare";
+                $controllerResponse->responseCode = 444;
+                throw new XenForo_ControllerResponse_Exception($controllerResponse);
+            }
             return;
         }
 
