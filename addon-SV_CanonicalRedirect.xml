@@ -7,6 +7,7 @@
   <admin_template_modifications/>
   <code_events/>
   <code_event_listeners>
+    <listener event_id="load_class_controller" execute_order="9000" callback_class="SV_CanonicalRedirect_Listener" callback_method="load_class" active="1" hint="XenForo_ControllerPublic_Register" description="XenForo_ControllerPublic_Register"/>
     <listener event_id="visitor_setup" execute_order="1" callback_class="SV_CanonicalRedirect_Listener" callback_method="visitor_setup" active="1" hint="" description="Canonical Redirect"/>
   </code_event_listeners>
   <cron/>
@@ -36,6 +37,12 @@ robot={xen:phrase sv_canonicalredirect_robots}</edit_format_params>
       <sub_options></sub_options>
       <relation group_id="SV_CanonicalRedirect" display_order="20"/>
     </option>
+    <option option_id="SV_CanonicalRedirection_CloudFlareReg" edit_format="onoff" data_type="boolean" can_backup="1">
+      <default_value></default_value>
+      <edit_format_params></edit_format_params>
+      <sub_options></sub_options>
+      <relation group_id="SV_CanonicalRedirect" display_order="30"/>
+    </option>
     <option option_id="SV_CanonicalRedirection_Perm" edit_format="onoff" data_type="boolean" can_backup="1">
       <default_value>1</default_value>
       <edit_format_params></edit_format_params>
@@ -55,6 +62,8 @@ robot={xen:phrase sv_canonicalredirect_robots}</edit_format_params>
     <phrase title="option_SV_CanonicalRedirectionGroups_Blacklist" version_id="1010000" version_string="1.1.0"><![CDATA[Always redirect groups]]></phrase>
     <phrase title="option_SV_CanonicalRedirectionGroups_Blacklist_explain" version_id="1010000" version_string="1.1.0"><![CDATA[Always direct members of these group. comma delimited list.]]></phrase>
     <phrase title="option_SV_CanonicalRedirection_CloudFlare" version_id="1010000" version_string="1.1.0"><![CDATA[Require CloudFlare on redirect]]></phrase>
+    <phrase title="option_SV_CanonicalRedirection_CloudFlareReg" version_id="1020000" version_string="1.2.0"><![CDATA[Canonical Redirection on Registration]]></phrase>
+    <phrase title="option_SV_CanonicalRedirection_CloudFlareReg_explain" version_id="1020000" version_string="1.2.0"><![CDATA[Always applies redirection policies on registration pages.]]></phrase>
     <phrase title="option_SV_CanonicalRedirection_CloudFlare_explain" version_id="1010000" version_string="1.1.0"><![CDATA[If a class of user could be redirected, validates that they are using cloudflare. If they are not returns 444, which causes nginx to hang up.]]></phrase>
     <phrase title="option_SV_CanonicalRedirection_explain" version_id="1000000" version_string="1.0.0"><![CDATA[]]></phrase>
     <phrase title="option_SV_CanonicalRedirection_Perm" version_id="1000000" version_string="1.0.0"><![CDATA[Permanent redirect]]></phrase>

@@ -10,6 +10,11 @@ class SV_CanonicalRedirect_Session extends XenForo_Session
 
 class SV_CanonicalRedirect_Listener
 {
+    public static function load_class($class, array &$extend)
+    {
+        $extend[] = 'SV_CanonicalRedirect_'.$class;
+    }
+
     public static function visitor_setup(XenForo_Visitor &$visitor)
     {
         if (!XenForo_Application::isRegistered('session'))
